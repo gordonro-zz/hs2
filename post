@@ -1,0 +1,3 @@
+#!/bin/sh
+curl -H "Content-Type: text/xml" -d @testpost.xml http://localhost:8085/
+

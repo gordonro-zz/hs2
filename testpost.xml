@@ -1,0 +1,15 @@
+<?xml version="1.0"?><rainForest macId="0x0000d8d5b900028a" version="undefined" timestamp="1389936614s">
+<InstantaneousDemand>
+  <DeviceMacId>0xd8d5b90000000bde</DeviceMacId>
+  <MeterMacId>0x001350030011b340</MeterMacId>
+  <TimeStamp>0x1a6b7a62</TimeStamp>
+  <Demand>0x000749</Demand>
+  <Multiplier>0x00000001</Multiplier>
+  <Divisor>0x000003e8</Divisor>
+  <DigitsRight>0x03</DigitsRight>
+  <DigitsLeft>0x0f</DigitsLeft>
+  <SuppressLeadingZero>Y</SuppressLeadingZero>
+</InstantaneousDemand>
+
+</rainForest>
+

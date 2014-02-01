@@ -1,0 +1,48 @@
+gordons-mbp-3:hs4 gordon$ netcat -l -p 8085
+POST / HTTP/1.1
+Host: 192.168.1.153:8085
+Accept: */*
+From: nobody@rainforestautomation.com
+User-Agent: Raven Uploader/v1
+Content-Type: application/xml
+Content-Length: 455
+
+<?xml version="1.0"?><rainForest macId="0x0000d8d5b900028a" version="undefined" timestamp="1389935792s">
+<NetworkInfo>
+  <DeviceMacId>0xd8d5b90000000bde</DeviceMacId>
+  <CoordMacId>0x001350030011b340</CoordMacId>
+  <Status>Connected</Status>
+  <Description>Successfully Joined</Description>
+  <ExtPanId>0x001350030011b340</ExtPanId>
+  <Channel>24</Channel>
+  <ShortAddr>0xaa59</ShortAddr>
+  <LinkStrength>0x64</LinkStrength>
+</NetworkInfo>
+
+</rainForest>
+
+^Cgordons-mbp-3:hs4 gordon$ netcat -l -p 8085
+POST / HTTP/1.1
+Host: 192.168.1.153:8085
+Accept: */*
+From: nobody@rainforestautomation.com
+User-Agent: Raven Uploader/v1
+Content-Type: application/xml
+Content-Length: 506
+
+<?xml version="1.0"?><rainForest macId="0x0000d8d5b900028a" version="undefined" timestamp="1389935985s">
+<InstantaneousDemand>
+  <DeviceMacId>0xd8d5b90000000bde</DeviceMacId>
+  <MeterMacId>0x001350030011b340</MeterMacId>
+  <TimeStamp>0x1a6b772d</TimeStamp>
+  <Demand>0x000bde</Demand>
+  <Multiplier>0x00000001</Multiplier>
+  <Divisor>0x000003e8</Divisor>
+  <DigitsRight>0x03</DigitsRight>
+  <DigitsLeft>0x0f</DigitsLeft>
+  <SuppressLeadingZero>Y</SuppressLeadingZero>
+</InstantaneousDemand>
+
+</rainForest>
+
+
