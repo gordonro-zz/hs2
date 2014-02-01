@@ -8,12 +8,12 @@
   (:require [clojure.zip :as zip]                                                     
     [clojure.xml :as xml]) 
 
-  ; (:use incanter.core)
-  ; (:use incanter.stats)
-  ; (:use incanter.charts)
-  ; (:use incanter.io) 
-  ; (:use somnium.congomongo)
-  ; (:use incanter.mongodb)
+  (:use incanter.core)
+  (:use incanter.stats)
+  (:use incanter.charts)
+  (:use incanter.io) 
+  (:use somnium.congomongo)
+  (:use incanter.mongodb)
 
   (:require [clj-time 
               [core :as tm]
