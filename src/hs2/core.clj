@@ -8,12 +8,13 @@
   (:require [clojure.zip :as zip]                                                     
     [clojure.xml :as xml]) 
 
-  (:use incanter.core)
-  (:use incanter.stats)
-  (:use incanter.charts)
-  (:use incanter.io) 
-  (:use somnium.congomongo)
-  (:use incanter.mongodb)
+   (:use incanter.core)
+   (:use incanter.stats)
+   (:use incanter.charts)
+   (:use incanter.io) 
+   (:use incanter.mongodb)
+   (:use somnium.congomongo)
+   
 
   (:require [clj-time 
               [core :as tm]
@@ -21,7 +22,7 @@
               [format :as fmt]])
   (:use clj-time.coerce)
 
-  (:use clojure.java.io)
+  (:require [clojure.java.io :as io]); avoids 'copy' clasking with incanter.core 'copy'
   (:gen-class :main true)
 )
 
@@ -183,14 +184,14 @@
   "Eagle POST recevier and csv generator."
   []
 
-  (if (.exists (as-file "eagle.csv"))
+  (if (.exists (io/as-file "eagle.csv"))
     (println "eagle.csv data file exists")
     ; else ...
     (do     
       (println "Creating eagle.csv data file")
       (spit "eagle.csv" 
         (reduce str ["localstampdate, localstamptime, tzone, timestamp, demand, delivered, "
-        "received, timestamp, devicemacid, metermacid, macid \n"]))))
+        "received, devicemacid, metermacid, macid \n"]))))
 
   (println "Eagle POST recevier and csv generator. Listening for post on port 8085. \n\r")
   (println "Set Cloud on Eagle to Manual and enter the IP of your PC, eg http://192.168.1.10:8085\n\r")
@@ -202,19 +203,31 @@
   ;   (read-dataset
   ;     "/Users/gordon/cars.csv"
   ;     :header true))
+  (def edata
+    (read-dataset
+      "/Users/gordon/ClojProj/hs2/eagle.csv"
+      :header true))
 
-  ; (print data); works
+    (print edata); works
 
   ; (with-data data
   ;   (def lm (linear-model ($ :dist) ($ :speed)))
   ;   (doto (scatter-plot ($ :speed) ($ :dist))
   ;     (add-lines ($ :speed) (:fitted lm))
   ;     view))
+  (with-data edata
+    ;(def lm (linear-model ($ :timestamp) ($ :delivered)))
+    (doto (scatter-plot ($ :delivered) ($ :timestamp))
+      (add-lines ($ :delivered) ($ :received)); (:fitted lm))
+      view))
 
-  ; (def results (-> (conj-cols data (:fitted lm) (:residuals lm))
-  ;  (col-names [:speed :dist :predicted :residuals])))
+  ;(def results (-> (conj-cols data (:fitted lm) (:residuals lm))
+   ;(col-names [:speed :dist :predicted :residuals])))
+  ; (def results (-> (conj-cols edata (:fitted lm) (:residuals lm))
+  ;  (col-names [:demand :timestamp :predicted :residuals])))
 
-  ;(println results)
+  ; ;(println results)
+  ; (println results)
 
 
   
